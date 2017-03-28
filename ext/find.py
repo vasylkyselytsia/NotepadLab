@@ -12,11 +12,20 @@ class Find(QtWidgets.QDialog):
 
         self.parent = parent
 
+        self.query = r'Kl\w{1,3}12\w{2,5}g'
+
         self.lastStart = 0
 
         self.initUI()
 
     def initUI(self):
+
+        self.normalRadio = QtWidgets.QRadioButton("Тест", self)
+        self.normalRadio.setChecked(True)
+        self.normalRadio.clicked.connect(self.change_enable)
+
+        regexRadio = QtWidgets.QRadioButton("Регулярний вираз", self)
+        regexRadio.clicked.connect(self.change_enable)
 
         findButton = QtWidgets.QPushButton("Знайти", self)
         findButton.clicked.connect(self.find)
@@ -27,9 +36,9 @@ class Find(QtWidgets.QDialog):
         allButton = QtWidgets.QPushButton("Замінити все", self)
         allButton.clicked.connect(self.replaceAll)
 
-        self.normalRadio = QtWidgets.QRadioButton("Тест", self)
-
-        regexRadio = QtWidgets.QRadioButton("Регулярний вираз", self)
+        self.remakeButton = QtWidgets.QPushButton("Перетворити", self)
+        self.remakeButton.setEnabled(not self.normalRadio.isChecked())
+        self.remakeButton.clicked.connect(self.remake)
 
         self.findField = QtWidgets.QTextEdit(self)
         self.findField.resize(250, 50)
@@ -45,14 +54,16 @@ class Find(QtWidgets.QDialog):
         layout.addWidget(findButton, 2, 0, 1, 2)
 
         layout.addWidget(self.replaceField, 3, 0, 1, 4)
-        layout.addWidget(replaceButton, 4, 0, 1, 2)
-        layout.addWidget(allButton, 4, 2, 1, 2)
+        layout.addWidget(replaceButton, 4, 0, 1, 1)
+        layout.addWidget(allButton, 4, 1, 1, 1)
+        layout.addWidget(self.remakeButton, 4, 3, 1, 1)
 
         self.setGeometry(300, 300, 360, 250)
         self.setWindowTitle("Знайти та замінити")
         self.setLayout(layout)
 
-        self.normalRadio.setChecked(True)
+    def change_enable(self):
+        self.remakeButton.setEnabled(not self.normalRadio.isChecked())
 
     def find(self):
 
@@ -68,6 +79,7 @@ class Find(QtWidgets.QDialog):
                 self.lastStart = 0
                 self.parent.text.moveCursor(QtGui.QTextCursor.End)
         else:
+            self.query = query
             pattern = re.compile(query)
             match = pattern.search(text, self.lastStart + 1)
             if match:
@@ -91,6 +103,26 @@ class Find(QtWidgets.QDialog):
         while self.lastStart:
             self.replace()
             self.find()
+
+    def remake(self):
+        cursor = self.parent.text.textCursor()
+        word = cursor.selection().toPlainText()
+
+        digits = []
+
+        for idx, symbol in enumerate(self.query):
+            if idx == len(self.query) - 1:
+                break
+            digits.extend([symbol] if symbol.isdigit() and self.query[idx + 1] == '}' else [])
+
+        regexp = self.query.replace('\w', '(\w').replace('}', '})')
+
+        replace = re.findall(regexp, word)
+
+        if replace:
+            for idx, rep in enumerate(replace[0]):
+                word = word.replace(rep, digits[idx] * len(rep))
+        self.replaceField.setText(word)
 
     def moveCursor(self, start, end):
         cursor = self.parent.text.textCursor()
