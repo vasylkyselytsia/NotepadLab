@@ -22,6 +22,3 @@ class UI(object):
         _translate = QtCore.QCoreApplication.translate
         mu_id.setWindowTitle(_translate(p_str="name", p_str_1=title))
         self.clear_btn.setText()
-
-
-    pass

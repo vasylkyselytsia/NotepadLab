@@ -10,54 +10,54 @@ from ext import *
 
 class Main(QtWidgets.QMainWindow):
 
-    dir_path = os.path.dirname(os.path.realpath(__file__)) + '\img'
+    dir_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'img')
 
-    NEW = dir_path + '\\new.png'
-    OPEN = dir_path + '\\open.png'
-    SAVE = dir_path + '\\save.png'
-    SAVE_AS = dir_path + '\\save_how.png'
-    SAVE_PHOTO = dir_path + '\\photo.png'
-    PRINT = dir_path + '\\print.png'
+    NEW = os.path.join(dir_path, 'new.png')
+    OPEN = os.path.join(dir_path, 'open.png')
+    SAVE = os.path.join(dir_path, 'save.png')
+    SAVE_AS = os.path.join(dir_path, 'save_how.png')
+    SAVE_PHOTO = os.path.join(dir_path, 'photo.png')
+    PRINT = os.path.join(dir_path, 'print.png')
 
-    DELETE = dir_path + '\\delete.png'
-    REMAKE = dir_path + '\\remake.png'
-    REPLACE = dir_path + '\\replace.png'
-    FIND = dir_path + '\\find.png'
+    DELETE = os.path.join(dir_path, 'delete.png')
+    REMAKE = os.path.join(dir_path, 'remake.png')
+    REPLACE = os.path.join(dir_path, 'replace.png')
+    FIND = os.path.join(dir_path, 'find.png')
 
-    COPY = dir_path + '\\copy.png'
-    CUT = dir_path + '\\cut.png'
-    PASTE = dir_path + '\\paste.png'
+    COPY = os.path.join(dir_path, 'copy.png')
+    CUT = os.path.join(dir_path, 'cut.png')
+    PASTE = os.path.join(dir_path, 'paste.png')
 
-    REDO = dir_path + '\\redo.png'
-    UNDO = dir_path + '\\undo.png'
-    ABOUT = dir_path + '\\about.png'
+    REDO = os.path.join(dir_path, 'redo.png')
+    UNDO = os.path.join(dir_path, 'undo.png')
+    ABOUT = os.path.join(dir_path, 'about.png')
 
-    NOTEPAD = dir_path + '\\notepad.png'
+    NOTEPAD = os.path.join(dir_path, 'notepad.png')
 
-    CALENDAR = dir_path + '\\calendar.png'
-    CALCULATOR = dir_path + '\\calculator.png'
-    TABLE = dir_path + '\\table.png'
-    IMAGE = dir_path + '\\image.png'
-    BULLETS_LIST = dir_path + '\\bullets_list.png'
-    NUMBERS_LIST = dir_path + '\\numbers_list.png'
+    CALENDAR = os.path.join(dir_path, 'calendar.png')
+    CALCULATOR = os.path.join(dir_path, 'calculator.png')
+    TABLE = os.path.join(dir_path, 'table.png')
+    IMAGE = os.path.join(dir_path, 'image.png')
+    BULLETS_LIST = os.path.join(dir_path, 'bullets_list.png')
+    NUMBERS_LIST = os.path.join(dir_path, 'numbers_list.png')
 
-    FONT_COLOR = dir_path + '\\font_color.png'
-    BACKGROUND_COLOR = dir_path + '\\background_color.png'
-    BOLD = dir_path + '\\bold.png'
-    ITALIC = dir_path + '\\italic.png'
-    UNDERSCORE = dir_path + '\\underline.png'
+    FONT_COLOR = os.path.join(dir_path, 'font_color.png')
+    BACKGROUND_COLOR = os.path.join(dir_path, 'background_color.png')
+    BOLD = os.path.join(dir_path, 'bold.png')
+    ITALIC = os.path.join(dir_path, 'italic.png')
+    UNDERSCORE = os.path.join(dir_path, 'underline.png')
 
-    ALIGN_LEFT = dir_path + '\\left_align.png'
-    ALIGN_RIGHT = dir_path + '\\right_align.png'
-    ALIGN_CENTER = dir_path + '\\center_align.png'
-    ALIGN_JUSTIFY = dir_path + '\\justify_align.png'
+    ALIGN_LEFT = os.path.join(dir_path, 'left_align.png')
+    ALIGN_RIGHT = os.path.join(dir_path, 'right_align.png')
+    ALIGN_CENTER = os.path.join(dir_path, 'center_align.png')
+    ALIGN_JUSTIFY = os.path.join(dir_path, 'justify_align.png')
 
-    LEFT_INDENT = dir_path + '\\left-indent.png'
-    RIGHT_INDENT = dir_path + '\\right-indent.png'
+    LEFT_INDENT = os.path.join(dir_path, 'left-indent.png')
+    RIGHT_INDENT = os.path.join(dir_path, 'right-indent.png')
 
-    STRIKE = dir_path + '\\strike.png'
-    SUPERSCRIPT = dir_path + '\\superscript.png'
-    SUBSCRIPT = dir_path + '\\subscript.png'
+    STRIKE = os.path.join(dir_path, 'strike.png')
+    SUPERSCRIPT = os.path.join(dir_path, 'superscript.png')
+    SUBSCRIPT = os.path.join(dir_path, 'subscript.png')
 
     def __init__(self, parent=None):
         QtWidgets.QMainWindow.__init__(self, parent)
