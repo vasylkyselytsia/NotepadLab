@@ -365,7 +365,7 @@ class Main(QtWidgets.QMainWindow):
             popup.setIcon(QtWidgets.QMessageBox.Warning)
             popup.setWindowTitle("Блокнот++")
 
-            popup.setText("Додкумент змнінено!")
+            popup.setText("Документ змінено!")
 
             popup.setInformativeText("Ви бажаєте зберегти зміни?")
 
